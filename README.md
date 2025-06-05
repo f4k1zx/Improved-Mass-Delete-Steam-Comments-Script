@@ -1,4 +1,4 @@
-# Improved-Mass-Delete-Steam-Comments-Script
+# Improved Mass Delete Steam Comments Script
 
 # Instructions for Use:
 
