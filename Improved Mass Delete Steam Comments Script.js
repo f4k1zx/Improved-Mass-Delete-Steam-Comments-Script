@@ -1,51 +1,51 @@
 (async function() {
-    // Fonction pour attendre un certain temps (en millisecondes)
+    // Function to wait for a specified time (in milliseconds)
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    // Fonction pour faire défiler la page jusqu'en bas pour charger tous les commentaires
+    // Function to scroll to the bottom of the page to load all comments
     async function scrollToLoadComments() {
         let lastHeight = document.body.scrollHeight;
         while (true) {
             window.scrollTo(0, document.body.scrollHeight);
-            await sleep(2000); // Attendre que le contenu charge
+            await sleep(2000); // Wait for content to load
             let newHeight = document.body.scrollHeight;
-            if (newHeight === lastHeight) break; // Plus de nouveaux commentaires chargés
+            if (newHeight === lastHeight) break; // No more new comments loaded
             lastHeight = newHeight;
-            console.log("Chargement de nouveaux commentaires...");
+            console.log("Loading more comments...");
         }
-        console.log("Tous les commentaires sont chargés.");
+        console.log("All comments have been loaded.");
     }
 
-    // Faire défiler la page pour charger tous les commentaires
+    // Scroll the page to load all comments
     await scrollToLoadComments();
 
-    // Boucle pour gérer les commentaires par lots
+    // Loop to handle comments in batches
     while (true) {
-        // Sélecteur pour les boutons de suppression des commentaires
+        // Selector for comment deletion buttons
         const deleteButtons = document.querySelectorAll('.commentthread_comment_actions a[href*="DeleteComment"]');
         
         if (deleteButtons.length === 0) {
-            console.log("Aucun commentaire restant ou aucun bouton de suppression disponible.");
-            break; // Sortir si aucun bouton de suppression n'est trouvé
+            console.log("No comments remaining or no delete buttons available.");
+            break; // Exit if no delete buttons are found
         }
 
-        console.log(`Trouvé ${deleteButtons.length} commentaires à supprimer dans ce lot.`);
+        console.log(`Found ${deleteButtons.length} comments to delete in this batch.`);
 
-        // Parcourir chaque bouton de suppression
+        // Iterate through each delete button
         for (const button of deleteButtons) {
             try {
-                console.log("Suppression d'un commentaire...");
-                button.click(); // Simuler le clic sur le bouton de suppression
-                await sleep(3000); // Attendre 3 secondes pour éviter les problèmes de serveur
+                console.log("Deleting a comment...");
+                button.click(); // Simulate a click on the delete button
+                await sleep(3000); // Wait 3 seconds to avoid server issues
             } catch (error) {
-                console.error("Erreur lors de la suppression d'un commentaire :", error);
+                console.error("Error while deleting a comment:", error);
             }
         }
 
-        // Attendre un peu et vérifier si de nouveaux commentaires doivent être chargés
+        // Wait a bit and check if more comments need to be loaded
         await sleep(5000);
         await scrollToLoadComments();
     }
 
-    console.log("Suppression terminée ! Aucun commentaire restant détecté.");
+    console.log("Deletion completed! No remaining comments detected.");
 })();
