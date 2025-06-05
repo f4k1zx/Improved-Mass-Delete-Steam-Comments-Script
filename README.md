@@ -2,7 +2,7 @@
 
 # Instructions for Use:
 
-Go to the page https://steamcommunity.com/id/"*yourid*"/allcomments in Chrome or Brave.
+Go to the page https://steamcommunity.com/id/"yourid"/allcomments in Chrome or Brave.
 
 Open the browser console (right-click > Inspect > Console tab).
 
