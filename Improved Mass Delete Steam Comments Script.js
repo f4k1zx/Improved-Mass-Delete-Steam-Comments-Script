@@ -5,13 +5,19 @@
     // Function to scroll to the bottom of the page to load all comments
     async function scrollToLoadComments() {
         let lastHeight = document.body.scrollHeight;
-        while (true) {
+        let retries = 3; // Number of retries to ensure all comments are loaded
+        while (retries > 0) {
             window.scrollTo(0, document.body.scrollHeight);
-            await sleep(2000); // Wait for content to load
+            await sleep(1000); // Reduced to 1 second for faster loading
             let newHeight = document.body.scrollHeight;
-            if (newHeight === lastHeight) break; // No more new comments loaded
+            if (newHeight === lastHeight) {
+                retries--;
+                await sleep(1000); // Brief pause before retrying
+                continue;
+            }
             lastHeight = newHeight;
             console.log("Loading more comments...");
+            retries = 3; // Reset retries if new content is loaded
         }
         console.log("All comments have been loaded.");
     }
@@ -36,14 +42,14 @@
             try {
                 console.log("Deleting a comment...");
                 button.click(); // Simulate a click on the delete button
-                await sleep(3000); // Wait 3 seconds to avoid server issues
+                await sleep(1500); // Reduced to 1.5 seconds for faster deletion
             } catch (error) {
                 console.error("Error while deleting a comment:", error);
             }
         }
 
-        // Wait a bit and check if more comments need to be loaded
-        await sleep(5000);
+        // Brief pause and check if more comments need to be loaded
+        await sleep(3000); // Reduced to 3 seconds for batch processing
         await scrollToLoadComments();
     }
 
