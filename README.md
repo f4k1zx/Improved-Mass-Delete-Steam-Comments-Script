@@ -6,7 +6,7 @@ Go to the page https://steamcommunity.com/id/"yourid"/allcomments in Chrome or B
 
 Open the browser console (right-click > Inspect > Console tab).
 
-Copy and paste the script above into the console, then press Enter.
+Copy and paste the script into the console, then press Enter.
 
 # The script will:
 
