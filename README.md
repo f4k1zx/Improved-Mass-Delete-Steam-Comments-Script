@@ -12,7 +12,7 @@ Copy and paste the [script](https://github.com/f4k1zx/Improved-Mass-Delete-Steam
 
 Scroll the page to load all comments (in case of dynamic loading).
 
-Delete comments in batches, with a 3-second pause between each deletion to avoid overwhelming the server.
+Delete comments in batches, with 1.5-second pause between each deletion to avoid overwhelming the server.
 
 Check again for remaining comments after each batch.
 
