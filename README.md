@@ -4,7 +4,7 @@
 
 Go to the page https://steamcommunity.com/id/"yourid"/allcomments in Chrome or Brave.
 
-Open the browser console (right-click > Inspect > Console tab).
+Open the browser console (right-click > Inspect > Console tab OR pressing "Ctrl+Shit+J").
 
 Copy and paste the [script](https://github.com/f4k1zx/Improved-Mass-Delete-Steam-Comments-Script/blob/main/Improved%20Mass%20Delete%20Steam%20Comments%20Script.js) into the console, then press Enter.
 
